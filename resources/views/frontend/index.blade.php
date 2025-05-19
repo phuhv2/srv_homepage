@@ -1,0 +1,363 @@
+@extends('frontend.layouts.master')
+@section('title','E-SHOP || HOME PAGE')
+@section('main-content')
+<!-- Main content Start -->
+<div class="main-content">
+    <!-- Slider Start -->
+    <div id="rs-slider" class="rs-slider slider1">
+        <div class="bend niceties">
+            <div id="nivoSlider" class="slides">
+                <img src="{{ asset('frontend/images/sl1.jpg') }}" alt="" title="#slide-1">
+                <img src="{{ asset('frontend/images/DJI_0073.png') }}" alt="" title="#slide-2">
+                <img src="{{ asset('frontend/images/IMG_6261.jpg') }}" alt="" title="#slide-3">
+            </div>
+            <!-- Slide 1 -->
+            <div id="slide-1" class="slider-direction">
+                <div class="container">
+                    <div class="content-part">
+                        <div class="slider-des">
+                            <h1 class="sl-title white-color" style="font-size: 40px;">Precision in Every Part</h1>
+                            <div class="sl-desc">
+                                Delivering high-quality rubber and plastic components trusted by global manufacturers.
+                            </div>
+                        </div>
+                        <div class="slider-bottom">
+                            <ul>
+                                <li><a href="contact.html" class="readon banner-style">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div id="slide-2" class="slider-direction">
+                <div class="container">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Slider End -->
+
+    <!-- About Section Start -->
+    <div id="rs-about" class="rs-about style1 bg1 md-pt-80">
+        <div class="container">
+            <div class="row y-bottom">
+                <div class="col-lg-6 padding-0">
+                    <img style="border: 10px solid #fff;" src="{{ asset('frontend/images/ab1.jpg') }}" alt="">
+                </div>
+                <div class="col-lg-6 pl-66 pt-75 pb-75 md-pt-42 md-pb-72">
+                    <div class="sec-title mb-47 md-mb-42">
+                        <div class="sub-title primary">About Us</div>
+                        <h2 class="title mb-0">Sumirubber Vietnam ltd</h2>
+                    </div>
+                    <div class="services-part mb-30">
+                        <div class="services-icon">
+                            <img src="{{ asset('frontend/images/1_1.png') }}" alt="image">
+                        </div>
+                        <div class="services-text">
+                            <h4 class="title">Multi-Industry Manufacturing</h4>
+                            <div class="desc">Specializing in manufacturing and assembling components made from rubber, plastic, and metal for: office equipment, audiovisual and electronic products, automobiles, motorcycles, industrial and household products, and medical devices.</div>
+                        </div>
+                    </div>
+                    <div class="services-part">
+                        <div class="services-icon">
+                            <img src="{{ asset('frontend/images/2_2.png') }}" alt="image">
+                        </div>
+                        <div class="services-text">
+                            <h4 class="title">Enhancing Product Value</h4>
+                            <div class="desc">In addition to manufacturing, we provide technical inspection services, production process consulting, and sample product development—helping businesses improve quality and optimize operational efficiency.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Section End -->
+
+    <!-- Services Section Start -->
+    <div id="rs-services" class="rs-services style1 modify pt-50 pb-15 md-pt-72 md-pb-64">
+        <div class="container">
+            <div class="sec-title text-center mb-47 md-mb-42">
+                <div class="sub-title primary">Products</div>
+                <h2 class="title mb-0">Our Products</h2>
+            </div>
+            <div class="row gutter-16">
+                <div class="col-lg-3 col-sm-6 mb-16">
+                    <div class="service-wrap">
+                        <div class="icon-part">
+                            <img src="{{ asset('frontend/images/1_2.png') }}" alt="">
+                        </div>
+                        <div class="content-part">
+                            <h5 class="title"><a href="services-single.html">Rubber Components</a></h5>
+                            <div class="desc">Precision-engineered rubber parts for industrial durability and performance.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-16">
+                    <div class="service-wrap">
+                        <div class="icon-part">
+                            <img src="{{ asset('frontend/images/2_3.png') }}" alt="">
+                        </div>
+                        <div class="content-part">
+                            <h5 class="title"><a href="services-single.html">Plastic Parts</a></h5>
+                            <div class="desc">Custom plastic components designed for flexibility and resilience.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-16">
+                    <div class="service-wrap">
+                        <div class="icon-part">
+                            <img src="{{ asset('frontend/images/3_2.png') }}" alt="">
+                        </div>
+                        <div class="content-part">
+                            <h5 class="title"><a href="services-single.html">Metal Components</a></h5>
+                            <div class="desc">Metal parts machined to exact specifications for various applications.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mb-16">
+                    <div class="service-wrap">
+                        <div class="icon-part">
+                            <img src="{{ asset('frontend/images/4_1.png') }}" alt="">
+                        </div>
+                        <div class="content-part">
+                            <h5 class="title"><a href="services-single.html">Custom Assemblies</a></h5>
+                            <div class="desc">Assembly-ready components tailored to your technical requirements.</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Services Section End -->
+
+    <!-- Portfolio Section Start -->
+    <div class="container">
+        <div id="rs-portfolio" class="rs-portfolio style1">
+            <div class="rs-carousel owl-carousel dot-style1" data-loop="true" data-items="4" data-margin="22" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="2" data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="3" data-lg-device="4" data-md-device-nav="false" data-md-device-dots="true">
+                <div class="portfolio-item">
+                    <div class="img-part">
+                        <img src="{{ asset('frontend/images/3_2.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="img-part">
+                        <img src="{{ asset('frontend/images/4_1.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="img-part">
+                        <img src="{{ asset('frontend/images/5_1.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="img-part">
+                        <img src="{{ asset('frontend/images/7.jpg') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Portfolio Section End -->
+
+
+    <!-- Partner Section Start -->
+    <div class="sec-title text-center mb-50 md-mb-39 pt-50">
+        <h2 class="title mb-0">Our Customers</h2>
+    </div>
+    <div class="rs-partner gray-bg pt-70 pb-70 md-pb-80">
+
+        <div class="container">
+            <div class="rs-carousel owl-carousel" data-loop="true" data-items="4" data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="2" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="3" data-ipad-device-nav="false" data-ipad-device-dots="false" data-ipad-device2="2" data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="4" data-md-device-nav="false" data-md-device-dots="false">
+                <div class="partner-item">
+                    <a href="#"><img src="{{ asset('frontend/images/1.png') }}" alt=""></a>
+                </div>
+                <div class="partner-item">
+                    <a href="#"><img src="{{ asset('frontend/images/2.png') }}" alt=""></a>
+                </div>
+                <div class="partner-item">
+                    <a href="#"><img src="{{ asset('frontend/images/3.png') }}" alt=""></a>
+                </div>
+                <div class="partner-item">
+                    <a href="#"><img src="{{ asset('frontend/images/4_2.png') }}" alt=""></a>
+                </div>
+                <div class="partner-item">
+                    <a href="#"><img src="{{ asset('frontend/images/5_1.png') }}" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Partner Section End -->
+
+    <!-- Blog Section Start -->
+    <div class="rs-blog style1 pt-50 pb-50 md-pt-71 md-pb-72 sm-pb-75">
+        <div class="container">
+            <div class="row y-middle mb-53 md-mb-40 sm-mb-50">
+                <div class="col-md-6 sm-mb-22">
+                    <div class="sec-title">
+                        <span class="sub-title primary right-line">LATEST NEWS</span>
+                        <h2 class="title mb-0">Company Activitys</h2>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="btn-part text-right sm-text-left">
+                        <a class="readon" href="blog-single.html">View More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="rs-carousel owl-carousel dot-style1" data-loop="true" data-items="3" data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="true" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="true" data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="3" data-lg-device="3" data-md-device-nav="false" data-md-device-dots="true">
+                <div class="blog-wrap">
+                    <div class="img-part">
+                        <img src="images/n1.jpg" alt="">
+                        <div class="fly-btn">
+                            <a href="blog-single.html"><i class="flaticon-right-arrow"></i></a>
+                        </div>
+                    </div>
+                    <div class="content-part">
+                        <a class="categories" href="blog-single.html">Strategy</a>
+                        <h3 class="title"><a href="blog-single.html">Threatens the next generation of smartphones</a></h3>
+                        <div class="blog-meta">
+                            <div class="user-data">
+                                <img src="images/1_4.png" alt="">
+                                <span>admin</span>
+                            </div>
+                            <div class="date">
+                                <i class="fa fa-clock-o"></i> 06 Sep 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-wrap">
+                    <div class="img-part">
+                        <img src="images/n2.jpg" alt="">
+                        <div class="fly-btn">
+                            <a href="blog-single.html"><i class="flaticon-right-arrow"></i></a>
+                        </div>
+                    </div>
+                    <div class="content-part">
+                        <a class="categories" href="blog-single.html">Management</a>
+                        <h3 class="title"><a href="blog-single.html">Soundtrack filma Lady Exclusive Music</a></h3>
+                        <div class="blog-meta">
+                            <div class="user-data">
+                                <img src="images/1_4.png" alt="">
+                                <span>admin</span>
+                            </div>
+                            <div class="date">
+                                <i class="fa fa-clock-o"></i> 06 Sep 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-wrap">
+                    <div class="img-part">
+                        <img src="images/n3.jpg" alt="">
+                        <div class="fly-btn">
+                            <a href="blog-single.html"><i class="flaticon-right-arrow"></i></a>
+                        </div>
+                    </div>
+                    <div class="content-part">
+                        <a class="categories" href="blog-single.html">Consulting</a>
+                        <h3 class="title"><a href="blog-single.html">Winged moved stars, fruit creature seed night.</a></h3>
+                        <div class="blog-meta">
+                            <div class="user-data">
+                                <img src="images/1_4.png" alt="">
+                                <span>admin</span>
+                            </div>
+                            <div class="date">
+                                <i class="fa fa-clock-o"></i> 06 Sep 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-wrap">
+                    <div class="img-part">
+                        <img src="images/n1.jpg" alt="">
+                        <div class="fly-btn">
+                            <a href="blog-single.html"><i class="flaticon-right-arrow"></i></a>
+                        </div>
+                    </div>
+                    <div class="content-part">
+                        <a class="categories" href="blog-single.html">Development</a>
+                        <h3 class="title"><a href="blog-single.html">Given void great you’re good appear have i also fifth</a></h3>
+                        <div class="blog-meta">
+                            <div class="user-data">
+                                <img src="images/1_4.png" alt="">
+                                <span>admin</span>
+                            </div>
+                            <div class="date">
+                                <i class="fa fa-clock-o"></i> 06 Sep 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-wrap">
+                    <div class="img-part">
+                        <img src="images/n5.jpg" alt="">
+                        <div class="fly-btn">
+                            <a href="blog-single.html"><i class="flaticon-right-arrow"></i></a>
+                        </div>
+                    </div>
+                    <div class="content-part">
+                        <a class="categories" href="blog-single.html">Creative</a>
+                        <h3 class="title"><a href="blog-single.html">Lights winged seasons abundantly evening.</a></h3>
+                        <div class="blog-meta">
+                            <div class="user-data">
+                                <img src="images/1_4.png" alt="">
+                                <span>admin</span>
+                            </div>
+                            <div class="date">
+                                <i class="fa fa-clock-o"></i> 06 Sep 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-wrap">
+                    <div class="img-part">
+                        <img src="images/n6.jpg" alt="">
+                        <div class="fly-btn">
+                            <a href="blog-single.html"><i class="flaticon-right-arrow"></i></a>
+                        </div>
+                    </div>
+                    <div class="content-part">
+                        <a class="categories" href="blog-single.html">Finance</a>
+                        <h3 class="title"><a href="blog-single.html">Team You Want to Work With mistakes runners</a></h3>
+                        <div class="blog-meta">
+                            <div class="user-data">
+                                <img src="images/1_4.png" alt="">
+                                <span>admin</span>
+                            </div>
+                            <div class="date">
+                                <i class="fa fa-clock-o"></i> 06 Sep 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blog-wrap">
+                    <div class="img-part">
+                        <img src="images/n3.jpg" alt="">
+                        <div class="fly-btn">
+                            <a href="blog-single.html"><i class="flaticon-right-arrow"></i></a>
+                        </div>
+                    </div>
+                    <div class="content-part">
+                        <a class="categories" href="blog-single.html">Consulting</a>
+                        <h3 class="title"><a href="blog-single.html">Winged moved stars, fruit creature seed night.</a></h3>
+                        <div class="blog-meta">
+                            <div class="user-data">
+                                <img src="images/1_4.png" alt="">
+                                <span>admin</span>
+                            </div>
+                            <div class="date">
+                                <i class="fa fa-clock-o"></i> 06 Sep 2025
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog Section End -->
+</div>
+<!-- Main content End -->
+@endsection
