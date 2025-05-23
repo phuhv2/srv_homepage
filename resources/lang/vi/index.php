@@ -1,0 +1,23 @@
+<?php
+return [
+    'about_us' => 'Về chúng tôi',
+    'company_name' => 'Sumirubber Vietnam ltd',
+    'multi_industry_manufacturing_title' => 'Sản xuất đa ngành',
+    'multi_industry_manufacturing_desc' => 'Chuyên sản xuất và lắp ráp các linh kiện từ cao su, nhựa và kim loại cho: thiết bị văn phòng, sản phẩm nghe nhìn và điện tử, ô tô, xe máy, sản phẩm công nghiệp và gia dụng, và thiết bị y tế.',
+    'enhancing_product_value_title' => 'Gia tăng giá trị sản phẩm',
+    'enhancing_product_value_desc' => 'Ngoài sản xuất, chúng tôi còn cung cấp dịch vụ kiểm tra kỹ thuật, tư vấn quy trình sản xuất và phát triển mẫu sản phẩm — giúp doanh nghiệp nâng cao chất lượng và tối ưu hiệu quả vận hành.',
+    'products' => 'Sản phẩm',
+    'our_products' => 'Sản phẩm của chúng tôi',
+    'rubber_components' => 'Linh kiện cao su',
+    'rubber_components_desc' => 'Các bộ phận cao su chính xác, độ bền cao cho công nghiệp.',
+    'plastic_parts' => 'Linh kiện nhựa',
+    'plastic_parts_desc' => 'Các linh kiện nhựa tùy chỉnh, thiết kế linh hoạt và bền bỉ.',
+    'metal_components' => 'Linh kiện kim loại',
+    'metal_components_desc' => 'Các bộ phận kim loại gia công chính xác cho nhiều ứng dụng.',
+    'custom_assemblies' => 'Lắp ráp theo yêu cầu',
+    'custom_assemblies_desc' => 'Các bộ phận sẵn sàng lắp ráp, phù hợp với yêu cầu kỹ thuật của bạn.',
+    'our_customers' => 'Sản Phẩm Của Chúng Tôi',
+    'latest_news' => 'Tin mới nhất',
+    'company_activities' => 'Hoạt động công ty',
+    'view_more' => 'Xem thêm',
+];

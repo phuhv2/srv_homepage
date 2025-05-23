@@ -15,7 +15,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="display: none">
                     <label for="quote" class="col-form-label">Trích dẫn</label>
                     <textarea class="form-control" id="quote" name="quote">{{old('quote')}}</textarea>
                     @error('quote')

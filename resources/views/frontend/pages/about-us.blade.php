@@ -1,101 +1,83 @@
+@php
+    $setting = DB::table('settings')->first();
+@endphp
 @extends('frontend.layouts.master')
-
-@section('title','E-SHOP || About Us')
-
+@section('title','About Us - Sumirubber Vietnam ltd')
 @section('main-content')
+<!-- Main content Start -->
+<div class="main-content">
+    <!-- Breadcrumbs Section Start -->
+    <div class="rs-breadcrumbs bg-8">
+        <div class="container">
+            <div class="content-part text-center">
+                <h1 class="breadcrumbs-title white-color mb-0">Về Chúng Tôi</h1>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumbs Section End -->
 
-	<!-- Breadcrumbs -->
-	<div class="breadcrumbs">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="bread-inner">
-						<ul class="bread-list">
-							<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-							<li class="active"><a href="blog-single.html">About Us</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Breadcrumbs -->
+    <!-- About Section Start -->
+    <div class="rs-about inner pt-50 lg-pt-92 md-pt-80 md-pb-80">
+        <div class="container">
+            <div class="row y-middle mb-15 lg-mb-30 md-mb-0">
+                <div class="col-lg-6 md-mb-95">
+                    <div class="image-part">
+                        <img src="{{ $setting->photo }}" alt="srv">
+                    </div>
+                </div>
+                <div class="col-lg-6 pl-50 md-pl-15 pr-50 lg-pr-15">
+                    <div class="sec-title mb-25">
+                        <div class="sub-title primary">{{ __('about_us.section_title') }}</div>
+                        <h2 class="title mb-18">{{ __('about_us.company_name') }}</h2>
+                        <div class="desc">{{ __('about_us.company_intro') }}</div>
+                    </div>
+                    <ul class="listing-style2 mb-33">
+                        @foreach (__('about_us.services') as $service)
+                            <li>{{ $service }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Section End -->
 
-	<!-- About Us -->
-	<section class="about-us section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-12">
-						<div class="about-content">
-							@php
-								$settings=DB::table('settings')->get();
-							@endphp
-							<h3>Welcome To <span>Eshop</span></h3>
-							<p>@foreach($settings as $data) {{$data->description}} @endforeach</p>
-							<div class="button">
-								<a href="{{route('blog')}}" class="btn">Our Blog</a>
-								<a href="{{route('contact')}}" class="btn primary">Contact Us</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6 col-12">
-						<div class="about-img overlay">
-							{{-- <div class="button">
-								<a href="https://www.youtube.com/watch?v=nh2aYrGMrIE" class="video video-popup mfp-iframe"><i class="fa fa-play"></i></a>
-							</div> --}}
-							<img src="@foreach($settings as $data) {{$data->photo}} @endforeach" alt="@foreach($settings as $data) {{$data->photo}} @endforeach">
-						</div>
-					</div>
-				</div>
-			</div>
-	</section>
-	<!-- End About Us -->
-
-
-	<!-- Start Shop Services Area -->
-	<section class="shop-services section">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-rocket"></i>
-						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-reload"></i>
-						<h4>Free Return</h4>
-						<p>Within 30 days returns</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-lock"></i>
-						<h4>Sucure Payment</h4>
-						<p>100% secure payment</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-				<div class="col-lg-3 col-md-6 col-12">
-					<!-- Start Single Service -->
-					<div class="single-service">
-						<i class="ti-tag"></i>
-						<h4>Best Peice</h4>
-						<p>Guaranteed price</p>
-					</div>
-					<!-- End Single Service -->
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Shop Services Area -->
-
-	@include('frontend.layouts.newsletter')
+    <!-- Counter Section Start -->
+    <div class="rs-counter style1 modify bg21 pt-92 pb-100 md-pt-72 md-pb-80">
+        <div class="container">
+            <div class="sec-title text-center mb-52 md-mb-29">
+                <div class="sub-title white-color">Fun Facts</div>
+                <h2 class="title mb-0 white-color">Lý do khách hàng tin tưởng chúng tôi</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-30">
+                    <div class="couter-part plus">
+                        <div class="rs-count">20</div>
+                        <h5 class="title">Năm kinh nghiệm sản xuất</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-30">
+                    <div class="couter-part plus">
+                        <div class="rs-count">1000</div>
+                        <h5 class="title">Linh kiện được phát triển</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 xs-mb-30">
+                    <div class="couter-part plus">
+                        <div class="rs-count">500</div>
+                        <h5 class="title">Nhân sự và chuyên gia kỹ thuật</h5>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="couter-part plus">
+                        <div class="rs-count">10</div>
+                        <h5 class="title">Quốc gia đang hợp tác xuất khẩu</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Counter Section End -->
+</div>
+<!-- Main content End -->
 @endsection

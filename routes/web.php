@@ -15,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register'=>false]);
 
+// web.php
+Route::get('lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'vi'])) {
+        abort(400);
+    }
+    session(['locale' => $locale]);
+    App::setLocale($locale);
+    return redirect()->back();
+})->name('lang.switch');
+
 Route::get('user/login','FrontendController@login')->name('login.form');
 Route::post('user/login','FrontendController@loginSubmit')->name('login.submit');
 Route::get('user/logout','FrontendController@logout')->name('user.logout');
@@ -32,8 +42,10 @@ Route::get('/','FrontendController@home')->name('home');
 // Frontend Routes
 Route::get('/home', 'FrontendController@index');
 Route::get('/about-us','FrontendController@aboutUs')->name('about-us');
+Route::get('/recruitment','FrontendController@recruitment')->name('recruitment');
+Route::post('/recruitment/message','MessageController@store')->name('recruitment.store');
 Route::get('/contact','FrontendController@contact')->name('contact');
-Route::post('/contact/message','MessageController@store')->name('contact.store');
+
 
 // Blog
 Route::get('/blog','FrontendController@blog')->name('blog');
@@ -48,7 +60,9 @@ Route::post('/subscribe','FrontendController@subscribe')->name('subscribe');
 
 // Backend section start
 Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
-    Route::get('/','AdminController@index')->name('admin');
+    Route::get('/', function () {
+        return redirect()->route('post.index');
+    })->name('admin');
     Route::get('/file-manager',function(){
         return view('backend.layouts.file-manager');
     })->name('file-manager');

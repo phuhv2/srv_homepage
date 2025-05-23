@@ -1,0 +1,23 @@
+<?php
+return [
+    'about_us' => 'About Us',
+    'company_name' => 'Sumirubber Vietnam ltd',
+    'multi_industry_manufacturing_title' => 'Multi-Industry Manufacturing',
+    'multi_industry_manufacturing_desc' => 'Specializing in manufacturing and assembling components made from rubber, plastic, and metal for: office equipment, audiovisual and electronic products, automobiles, motorcycles, industrial and household products, and medical devices.',
+    'enhancing_product_value_title' => 'Enhancing Product Value',
+    'enhancing_product_value_desc' => 'In addition to manufacturing, we provide technical inspection services, production process consulting, and sample product development—helping businesses improve quality and optimize operational efficiency.',
+    'products' => 'Products',
+    'our_products' => 'Our Products',
+    'rubber_components' => 'Rubber Components',
+    'rubber_components_desc' => 'Precision-engineered rubber parts for industrial durability and performance.',
+    'plastic_parts' => 'Plastic Parts',
+    'plastic_parts_desc' => 'Custom plastic components designed for flexibility and resilience.',
+    'metal_components' => 'Metal Components',
+    'metal_components_desc' => 'Metal parts machined to exact specifications for various applications.',
+    'custom_assemblies' => 'Custom Assemblies',
+    'custom_assemblies_desc' => 'Assembly-ready components tailored to your technical requirements.',
+    'our_customers' => 'Our Customers',
+    'latest_news' => 'Latest News',
+    'company_activities' => 'Company Activities',
+    'view_more' => 'View More',
+];

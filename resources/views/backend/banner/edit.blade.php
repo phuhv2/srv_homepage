@@ -69,5 +69,19 @@
     <script src="{{asset('backend/summernote/summernote.min.js')}}"></script>
     <script>
         $('#lfm').filemanager('image');
+        $(document).ready(function() {
+            $('#description').summernote({
+                height: 200,
+                toolbar: [
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link']], // Không có 'picture'
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
     </script>
 @endpush

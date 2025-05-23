@@ -1,4 +1,7 @@
-<!--Full width header Start-->
+@php
+    $setting = DB::table('settings')->first();
+@endphp
+    <!--Full width header Start-->
 <div class="full-width-header">
     <!-- Toolbar Start -->
     <div class="toolbar-area hidden-md">
@@ -7,18 +10,16 @@
                 <div class="col-md-5">
                     <div class="toolbar-contact">
                         <ul>
-                            <li><i class="flaticon-email"></i><a href="mailto:info@sumirubber-vn.com">info@sumirubber-vn.com</a></li>
-                            <li><i class="flaticon-call"></i><a href="tel:02253743571">0225 3743 571</a></li>
+                            <li><i class="flaticon-email"></i><a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a></li>
+                            <li><i class="flaticon-call"></i><a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-md-7">
                     <div class="toolbar-sl-share">
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="{{ route('lang.switch', 'vi') }}"><img style="max-width: 30px" src="{{ asset('frontend/images/vi.png') }}"/></a> </li>
+                            <li><a href="{{ route('lang.switch', 'en') }}"><img style="max-width: 30px" src="{{ asset('frontend/images/en.png') }}"/></a></li>
                         </ul>
                     </div>
                 </div>
@@ -35,7 +36,9 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="logo-area">
-                            <a href="index.html"><img src="{{ asset('frontend/images/logo-dark.png') }}" alt="logo"></a>
+                            <a href="{{ route('home') }}">
+                                <img src="{{ $setting->logo }}" alt="Sumirubber Vietnam">
+                            </a>
                         </div>
                     </div>
                     <div class="col-lg-9 text-right">
@@ -46,24 +49,37 @@
                                         <i class="fa fa-bars"></i>
                                     </a>
                                 </div>
+                                @php
+                                    $currentRoute = Route::currentRouteName();
+                                @endphp
                                 <nav class="rs-menu pr-65">
                                     <ul class="nav-menu">
-                                        <li class="rs-mega-menu mega-rs current-menu-item">
-                                            <a href="#">Home</a>
+                                        <li class="rs-mega-menu mega-rs {{ $currentRoute == 'home' ? 'current-menu-item' : '' }}">
+                                            <a href="{{ route('home') }}">{{ __('header.home') }}</a>
                                         </li>
-                                        <li>
-                                            <a href="about.html">About Us</a>
+                                        <li class="{{ $currentRoute == 'about-us' ? 'current-menu-item' : '' }}">
+                                            <a href="{{ route('about-us') }}">{{ __('header.about_us') }}</a>
                                         </li>
-                                        <li>
-                                            <a href="blog.html">Activity</a>
+                                        <li class="menu-item-has-children {{ Str::startsWith($currentRoute, 'blog') ? 'current-menu-item' : '' }}">
+                                            <a href="{{ route('blog') }}">{{ __('header.activity') }}</a>
+                                            <ul class="sub-menu">
+                                                @foreach(Helper::postCategoryList('posts') as $cat)
+                                                    <li>
+                                                        <a href="{{ route('blog.category', $cat->slug) }}"
+                                                           class="{{ request()->is('blog/category/'.$cat->slug) ? 'current-menu-item' : '' }}">
+                                                            {{ $cat->title }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                         </li>
-                                        <li>
-                                            <a href="recruitment.html">Recruitment</a>
+                                        <li class="rs-mega-menu mega-rs {{ $currentRoute == 'recruitment' ? 'current-menu-item' : '' }}">
+                                            <a href="{{ route('recruitment') }}">{{ __('header.recruitment') }}</a>
                                         </li>
-                                        <li>
-                                            <a href="contact.html">Contact</a>
+                                        <li class="{{ $currentRoute == 'contact' ? 'current-menu-item' : '' }}">
+                                            <a href="{{ route('contact') }}">{{ __('header.contact') }}</a>
                                         </li>
-                                    </ul> <!-- //.nav-menu -->
+                                    </ul>
                                 </nav>
                             </div> <!-- //.main-menu -->
                             <div class="expand-btn-inner">
@@ -111,22 +127,16 @@
                         </span>
             </div>
             <div class="canvas-logo">
-                <a href="index.html"><img src="{{ asset('frontend/images/logo-dark.png') }}" alt="logo"></a>
+                <a href="{{ route('home') }}"><img src="{{ asset('frontend/images/logo-dark.png') }}" alt="logo"></a>
             </div>
             <div class="offcanvas-text">
-                <p>Sumirubber Vietnam ltd is a subsidiary of Sumitomo Rubber Industries Japan</p>
+                <p>{{ __('footer.sub_about_us') }}</p>
             </div>
             <div class="canvas-contact">
                 <ul class="contact">
-                    <li><i class="flaticon-location"></i> Lô A-11, A-12, Khu công nghiệp Nhật Bản, Tân Tiến, An Dương, Hải Phòng, Việt Nam</li>
-                    <li><i class="flaticon-call"></i><a href="tel:02253743270">02253743270</a></li>
-                    <li><i class="flaticon-email"></i><a href="mailto:info@sumirubber-vn.com">info@sumirubber-vn.com</a></li>
-                </ul>
-                <ul class="social">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><i class="flaticon-location"></i> {{ $setting->address }}</li>
+                    <li><i class="flaticon-call"></i><a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a></li>
+                    <li><i class="flaticon-email"></i><a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a></li>
                 </ul>
             </div>
         </nav>

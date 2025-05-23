@@ -47,7 +47,7 @@
                             <tr>
                                 <td style="text-align: center">{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
-                                <td>{{$post->cat_info->title}}</td>
+                                <td>{{ optional($post->cat_info)->title }}</td>
                                 <td>{{$post->tags}}</td>
 
                                 <td>

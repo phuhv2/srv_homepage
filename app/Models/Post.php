@@ -28,27 +28,14 @@ class Post extends Model
     {
         return Post::with(['cat_info', 'author_info'])->orderBy('id', 'DESC')->paginate(100);
     }
-    // public function get_comments(){
-    //     return $this->hasMany('App\Models\PostComment','post_id','id');
-    // }
+
     public static function getPostBySlug($slug)
     {
         return Post::with(['tag_info', 'author_info'])->where('slug', $slug)->where('status', 'active')->first();
     }
 
-    public function comments()
-    {
-        return $this->hasMany(PostComment::class)->whereNull('parent_id')->where('status', 'active')->with('user_info')->orderBy('id', 'DESC');
-    }
-
-    public function allComments()
-    {
-        return $this->hasMany(PostComment::class)->where('status', 'active');
-    }
-
     public static function getBlogByTag($slug)
     {
-        // dd($slug);
         return Post::where('tags', $slug)->paginate(8);
     }
 

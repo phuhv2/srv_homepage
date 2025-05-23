@@ -1,6 +1,5 @@
 @extends('backend.layouts.master')
 @section('main-content')
-
     <div class="card">
         <h5 class="card-header">Chỉnh sửa bài viết</h5>
         <div class="card-body">
@@ -16,7 +15,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="display: none">
                     <label for="quote" class="col-form-label">Trích dẫn</label>
                     <textarea class="form-control" id="quote" name="quote">{{$post->quote}}</textarea>
                     @error('quote')
@@ -49,7 +48,6 @@
                         @endforeach
                     </select>
                 </div>
-                {{-- {{$post->tags}} --}}
                 @php
                     $post_tags=explode(',',$post->tags);
                 @endphp
@@ -74,11 +72,11 @@
                 <div class="form-group">
                     <label for="inputPhoto" class="col-form-label">Hình ảnh</label>
                     <div class="input-group">
-              <span class="input-group-btn">
-                  <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                  <i class="fa fa-picture-o"></i> Chọn
-                  </a>
-              </span>
+                    <span class="input-group-btn">
+                        <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                            <i class="fa fa-picture-o"></i> Chọn
+                        </a>
+                    </span>
                         <input id="thumbnail" class="form-control" type="text" name="photo" value="{{$post->photo}}">
                     </div>
                     <div id="holder" style="margin-top:15px;max-height:100px;"></div>
@@ -92,8 +90,7 @@
                     <label for="status" class="col-form-label">Trạng thái</label>
                     <select name="status" class="form-control">
                         <option value="active" {{(($post->status=='active')? 'selected' : '')}}>Hoạt động</option>
-                        <option value="inactive" {{(($post->status=='inactive')? 'selected' : '')}}>Không hoạt động
-                        </option>
+                        <option value="inactive" {{(($post->status=='inactive')? 'selected' : '')}}>Không hoạt động</option>
                     </select>
                     @error('status')
                     <span class="text-danger">{{$message}}</span>
@@ -110,8 +107,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{asset('backend/summernote/summernote.min.css')}}">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css"/>
     <style>
         .dropdown .dropdown-menu .selected {
             background: #f2f2f2 !important;
@@ -158,7 +154,6 @@
                     }
                 });
             }
-
             initSummernoteWithLFM('#summary', 'Write short description.....', 150);
             initSummernoteWithLFM('#quote', 'Write short Quote.....', 100);
             initSummernoteWithLFM('#description', 'Write full description.....', 300);

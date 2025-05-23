@@ -36,6 +36,10 @@ class FrontendController extends Controller
         return view('frontend.pages.about-us');
     }
 
+    public function recruitment()
+    {
+        return view('frontend.pages.recruitment');
+    }
     public function contact()
     {
         return view('frontend.pages.contact');
@@ -44,34 +48,37 @@ class FrontendController extends Controller
     public function blog()
     {
         $post = Post::query();
-
+        // Filter theo category
         if (!empty($_GET['category'])) {
             $slug = explode(',', $_GET['category']);
             $cat_ids = PostCategory::select('id')->whereIn('slug', $slug)->pluck('id')->toArray();
-            return $cat_ids;
             $post->whereIn('post_cat_id', $cat_ids);
         }
+        // Filter theo tag
         if (!empty($_GET['tag'])) {
             $slug = explode(',', $_GET['tag']);
             $tag_ids = PostTag::select('id')->whereIn('slug', $slug)->pluck('id')->toArray();
-            $post->where('post_tag_id', $tag_ids);
+            $post->whereIn('post_tag_id', $tag_ids);
         }
-
-        if (!empty($_GET['show'])) {
-            $post = $post->where('status', 'active')->orderBy('id', 'DESC')->paginate($_GET['show']);
-        } else {
-            $post = $post->where('status', 'active')->orderBy('id', 'DESC')->paginate(9);
-        }
-        // $post=Post::where('status','active')->paginate(8);
-        $rcnt_post = Post::where('status', 'active')->orderBy('id', 'DESC')->limit(3)->get();
-        return view('frontend.pages.blog')->with('posts', $post)->with('recent_posts', $rcnt_post);
+        // Phân trang
+        $perPage = !empty($_GET['show']) ? (int)$_GET['show'] : 9;
+        $posts = $post->with(['cat_info', 'author_info'])->where('status', 'active')->orderBy('id', 'DESC')->paginate($perPage);
+        $posts->appends($_GET);
+        // Bài viết gần đây
+        $recent_posts = Post::where('status', 'active')->orderBy('id', 'DESC')->limit(3)->get();
+        return view('frontend.pages.blog', compact('posts', 'recent_posts'));
     }
 
     public function blogDetail($slug)
     {
         $post = Post::getPostBySlug($slug);
+        if (!$post) {
+            abort(404);
+        }
         $rcnt_post = Post::where('status', 'active')->orderBy('id', 'DESC')->limit(3)->get();
-        return view('frontend.pages.blog-detail')->with('post', $post)->with('recent_posts', $rcnt_post);
+        return view('frontend.pages.blog-detail')
+            ->with('post', $post)
+            ->with('recent_posts', $rcnt_post);
     }
 
     public function blogSearch(Request $request)
@@ -83,7 +90,7 @@ class FrontendController extends Controller
             ->orwhere('description', 'like', '%' . $request->search . '%')
             ->orwhere('slug', 'like', '%' . $request->search . '%')
             ->orderBy('id', 'DESC')
-            ->paginate(8);
+            ->paginate(9);
         return view('frontend.pages.blog')->with('posts', $posts)->with('recent_posts', $rcnt_post);
     }
 
@@ -100,7 +107,6 @@ class FrontendController extends Controller
                 }
             }
         }
-
         $tagURL = "";
         if (!empty($data['tag'])) {
             foreach ($data['tag'] as $tag) {
@@ -116,9 +122,16 @@ class FrontendController extends Controller
 
     public function blogByCategory(Request $request)
     {
-        $post = PostCategory::getBlogByCategory($request->slug);
+        $category = PostCategory::where('slug', $request->slug)->firstOrFail();
+        $posts = Post::where('post_cat_id', $category->id)
+            ->where('status', 'active')
+            ->orderBy('id', 'DESC')
+            ->paginate(9);
         $rcnt_post = Post::where('status', 'active')->orderBy('id', 'DESC')->limit(3)->get();
-        return view('frontend.pages.blog')->with('posts', $post->post)->with('recent_posts', $rcnt_post);
+        return view('frontend.pages.blog', [
+            'posts' => $posts,
+            'recent_posts' => $rcnt_post
+        ]);
     }
 
     public function blogByTag(Request $request)

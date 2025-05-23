@@ -14,18 +14,13 @@
     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
          aria-labelledby="messagesDropdown">
         <h6 class="dropdown-header">
-            Trung tâm tin nhắn
+            Hồ sơ ứng tuyển
         </h6>
         <div id="message-items">
             @foreach(Helper::messageList() as $message)
                 <a class="dropdown-item d-flex align-items-center" href="{{route('message.show',$message->id)}}">
                     <div class="dropdown-list-image mr-3">
-                        @if($message->photo)
-                            <img class="rounded-circle" src="{{$message->photo}}" alt="profile">
-                        @else
-                            <img class="rounded-circle" src="{{asset('backend/img/avatar.png')}}" alt="default img">
-                        @endif
-                        {{-- <div class="status-indicator bg-success"></div> --}}
+                        <img class="rounded-circle" src="{{asset('backend/img/avatar.png')}}" alt="default img">
                     </div>
                     <div class="font-weight-bold">
                         <div class="text-truncate">{{$message->subject}}</div>
@@ -40,8 +35,7 @@
                 @endif
             @endforeach
         </div>
-        <a class="dropdown-item text-center small text-gray-500" href="{{route('message.index')}}">Hiển thị thêm tin
-            nhắn</a>
+        <a class="dropdown-item text-center small text-gray-500" href="{{route('message.index')}}">Hiển thị thêm hồ sơ</a>
     </div>
 </div>
 

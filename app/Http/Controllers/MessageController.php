@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
-use Illuminate\Http\Request;
+
 use App\Models\Message;
-use App\Events\MessageSent;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 class MessageController extends Controller
 {
 
@@ -24,29 +25,79 @@ class MessageController extends Controller
         //
     }
 
+//    public function store(Request $request)
+//    {
+//        $validated = $request->validate([
+//            'name' => 'string|required|min:2',
+//            'email' => 'email|required',
+//            'subject' => 'string|required',
+//            'phone' => 'numeric|required'
+//        ]);
+//        Message::create($validated);
+//        return response()->json(['success' => true]);
+//    }
+
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'string|required|min:2',
-            'email' => 'email|required',
-            'message' => 'required',
-            'subject' => 'string|required',
-            'phone' => 'numeric|required'
+        $request->validate([
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email',
+            'phone'   => 'required|string|max:20',
+            'subject' => 'required|string|not_in:0',
+            'cv'      => [
+                'nullable',
+                'max:2048',
+            ],
         ]);
-        $message = Message::create($request->only(['name', 'email', 'message', 'subject', 'phone']));
+
+        $position_apply = null;
+        if($request->subject =='worker') {
+            $position_apply = 'Công Nhân';
+        } else if ($request->subject =='qa') {
+            $position_apply = 'Nhân Viên Phòng Chất Lượng (QA)';
+        } else if ($request->subject =='plan') {
+            $position_apply = 'Nhân Viên Kế Hoạch Sản Xuất';
+        } else if ($request->subject =='pro') {
+            $position_apply = 'Nhân Viên Quản Lý Sản Xuất';
+        }
+
         $data = [
-            'url'     => route('message.show', $message->id),
-            'date'    => $message->created_at->format('F d, Y h:i A'),
-            'name'    => $message->name,
-            'email'   => $message->email,
-            'phone'   => $message->phone,
-            'message' => $message->message,
-            'subject' => $message->subject,
-            'photo'   => Auth()->user()->photo ?? null
+            'name'    => $request->name,
+            'email'   => $request->email,
+            'phone'   => $request->phone,
+            'subject' => $position_apply,
         ];
-        event(new MessageSent($data));
-        return response()->json(['success' => true]);
+
+        $htmlContent = "
+        <h2>Thông tin ứng viên:</h2>
+        <p><strong>Họ tên:</strong> {$data['name']}</p>
+        <p><strong>Email:</strong> {$data['email']}</p>
+        <p><strong>Số điện thoại:</strong> {$data['phone']}</p>
+        <p><strong>Vị trí ứng tuyển:</strong> {$data['subject']}</p>
+    ";
+
+        try {
+            Mail::send([], [], function ($message) use ($request, $htmlContent) {
+                $message->to('phuhv2@gmail.com')
+                    ->subject('Ứng tuyển việc làm từ website')
+                    ->html($htmlContent);
+
+                if ($request->hasFile('cv') && $request->file('cv')->isValid()) {
+                    $file = $request->file('cv');
+                    $message->attach($file->getRealPath(), [
+                        'as' => $file->getClientOriginalName(),
+                        'mime' => $file->getMimeType(),
+                    ]);
+                }
+            });
+
+            return response()->json(['success' => true, 'message' => 'Đã gửi đơn ứng tuyển thành công!']);
+        } catch (\Exception $e) {
+            \Log::error('Lỗi gửi mail: ' . $e->getMessage());
+            return response()->json(['error' => 'Lỗi khi gửi email: ' . $e->getMessage()], 500);
+        }
     }
+
 
     public function show(Request $request,$id)
     {

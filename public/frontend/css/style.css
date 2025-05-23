@@ -53,7 +53,7 @@
 36. Checkout Section CSS
 37. My account Section CSS
 38. Footer CSS
-39. Error 404 CSS 
+39. Error 404 CSS
 40. Scroll Up CSS
 41. Header Cart Modal Css
 42. Preloader Css
@@ -8314,6 +8314,7 @@ body .modal-backdrop {
   transform: rotate(-45deg);
   transition: all ease .3s;
 }
+.rs-header {border: thin solid #f2f2f2}
 .rs-services.style16 .services-wrap .icon-part i:before {
   font-size: 30px;
   line-height: 45px;
@@ -13712,6 +13713,7 @@ body .modal-backdrop {
   background: rgba(18, 115, 235, 0.5);
   box-shadow: none;
 }
+.recruit-select {width: 100%; height: 57px; margin-bottom: 30px; background: rgba(18, 115, 235, 0.5); color: #fff}
 .rs-freequote.style1.modify .quote-form button {
   background: #ffffff;
   color: #2386CB;
@@ -16141,7 +16143,7 @@ body .modal-backdrop {
   width: 30px;
   height: 30px;
   line-height: 30px;
-  background: #2386CB;
+  /*background: #2386CB;*/
   color: #ffffff;
   text-align: center;
 }
@@ -16424,7 +16426,7 @@ body .modal-backdrop {
   background-repeat: no-repeat;
 }
 /*---------------------------------------
-    39. Error 404 CSS 
+    39. Error 404 CSS
 ---------------------------------------*/
 .rs-page-error {
   height: 100vh;
