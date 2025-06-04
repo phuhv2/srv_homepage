@@ -16,6 +16,7 @@ return [
     'metal_components_desc' => 'Metal parts machined to exact specifications for various applications.',
     'custom_assemblies' => 'Custom Assemblies',
     'custom_assemblies_desc' => 'Assembly-ready components tailored to your technical requirements.',
+    'customers' => 'Customers',
     'our_customers' => 'Our Customers',
     'latest_news' => 'Latest News',
     'company_activities' => 'Company Activities',

@@ -54,13 +54,14 @@
                 @endphp
                 <div class="form-group">
                     <label for="role" class="col-form-label">Role</label>
-                    <select name="role" class="form-control">
+                    <select class="form-control" disabled>
                         <option value="">-----Chọn vai trò-----</option>
                         @foreach($roles as $role)
                             <option value="admin" {{(($role->role=='admin') ? 'selected' : '')}}>Quản trị</option>
                             <option value="user" {{(($role->role=='user') ? 'selected' : '')}}>Người dùng</option>
                         @endforeach
                     </select>
+                    <input type="hidden" name="role" value="admin">
                     @error('role')
                     <span class="text-danger">{{$message}}</span>
                     @enderror

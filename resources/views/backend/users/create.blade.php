@@ -53,11 +53,12 @@
                 @endphp
                 <div class="form-group">
                     <label for="role" class="col-form-label">Vai trò</label>
-                    <select name="role" class="form-control">
+                    <select class="form-control" disabled>
                         <option value="">-----Chọn vai trò-----</option>
-                        <option value="admin">Quản trị</option>
+                        <option value="admin" selected>Quản trị</option>
                         <option value="user">Người dùng</option>
                     </select>
+                    <input type="hidden" name="role" value="admin">
                     @error('role')
                     <span class="text-danger">{{$message}}</span>
                     @enderror

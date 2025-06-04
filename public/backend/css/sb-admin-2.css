@@ -6005,7 +6005,7 @@ a.close.disabled {
 }
 
 .modal-header {
-    display: flex;
+    /*display: flex;*/
     align-items: flex-start;
     justify-content: space-between;
     padding: 1rem 1rem;
@@ -11652,19 +11652,19 @@ a:focus {
 }
 
 .bg-login-image {
-    background: url("/srv_homepage/backend/img/login-img.jpeg");
+    background: url("../../backend/img/login-img.jpeg");
     background-position: center;
     background-size: cover;
 }
 
 .bg-register-image {
-    background: url("/srv_homepage/backend/img/login-img.jpeg");
+    background: url("../../backend/img/login-img.jpeg");
     background-position: center;
     background-size: cover;
 }
 
 .bg-password-image {
-    background: url("/srv_homepage/backend/img/login-img.jpeg");
+    background: url("../../backend/img/login-img.jpeg");
     background-position: center;
     background-size: cover;
 }

@@ -3,6 +3,6 @@ return [
     'home' => 'Home',
     'about_us' => 'About Us',
     'activity' => 'Activity',
-    'recruitment' => 'Recruitment',
+    'recruitment' => 'Apply',
     'contact' => 'Contact',
 ];

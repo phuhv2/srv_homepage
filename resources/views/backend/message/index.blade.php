@@ -6,7 +6,7 @@
                 @include('backend.layouts.notification')
             </div>
         </div>
-        <h5 class="card-header">Tin nhắn</h5>
+        <h5 class="card-header">Hồ sơ ứng tuyển</h5>
         <div class="card-body">
             @if(count($messages)>0)
                 <table class="table message-table" id="message-dataTable">
@@ -50,7 +50,7 @@
                   {{$messages->links('pagination::bootstrap-4')}}
                 </span>
             @else
-                <h2>Messages Empty!</h2>
+                <h5>Empty!</h5>
             @endif
         </div>
     </div>

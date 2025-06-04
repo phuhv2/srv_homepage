@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="user-dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered table-hover" id="user-dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
                         <th style="width: 15px">S.N.</th>
@@ -71,7 +71,7 @@
                                 <form method="POST" action="{{route('users.destroy',[$user->id])}}">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn btn-danger btn-sm dltBtn"
+                                    <button disabled class="btn btn-danger btn-sm dltBtn"
                                             data-id={{$user->id}} style="height:30px; width:30px;border-radius:50%
                                     " data-toggle="tooltip" data-placement="bottom" title="Delete"><i
                                         class="fas fa-trash-alt"></i></button>

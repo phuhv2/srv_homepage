@@ -25,7 +25,7 @@
 
                 <div class="form-group">
                     <label for="summary" class="col-form-label">Mô tả ngắn <span class="text-danger">*</span></label>
-                    <textarea class="form-control" id="summary" name="summary">{{old('summary')}}</textarea>
+                    <textarea class="form-control" id="summary" name="summary" placeholder="Write short description.....">{{old('summary')}}</textarea>
                     @error('summary')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
@@ -149,10 +149,7 @@
                     }
                 });
             }
-
-            initSummernoteWithLFM('#summary', 'Write short description.....', 100);
-            initSummernoteWithLFM('#description', 'Write detail description.....', 150);
-            initSummernoteWithLFM('#quote', 'Write detail Quote.....', 100);
+            initSummernoteWithLFM('#description', 'Write detail description.....', 450);
         });
     </script>
 @endpush

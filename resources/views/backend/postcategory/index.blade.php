@@ -15,14 +15,14 @@
         <div class="card-body">
             <div class="table-responsive">
                 @if(count($postCategories)>0)
-                    <table class="table table-bordered" id="post-category-dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-hover" id="post-category-dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>S.N.</th>
+                            <th style="width: 15px">S.N.</th>
                             <th>Tiêu đề</th>
                             <th>Slug</th>
                             <th>Trạng thái</th>
-                            <th>Hành động</th>
+                            <th style="width: 90px">Hành động</th>
                         </tr>
                         </thead>
                         <tfoot>

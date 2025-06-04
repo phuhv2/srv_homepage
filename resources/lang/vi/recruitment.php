@@ -1,6 +1,6 @@
 <?php
 return [
-    'title' => 'Tuyển dụng',
+    'title' => 'Ứng tuyển',
     'name' => 'Tên',
     'email' => 'E-mail',
     'phone' => 'Số điện thoại',

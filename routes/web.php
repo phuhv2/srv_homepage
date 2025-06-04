@@ -1,21 +1,26 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\PostCategoryController;
+use App\Http\Controllers\PostTagController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
-Auth::routes(['register'=>false]);
+Auth::routes(['register' => false]);
 
-// web.php
 Route::get('lang/{locale}', function ($locale) {
     if (!in_array($locale, ['en', 'vi'])) {
         abort(400);
@@ -25,114 +30,64 @@ Route::get('lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('lang.switch');
 
-Route::get('user/login','FrontendController@login')->name('login.form');
-Route::post('user/login','FrontendController@loginSubmit')->name('login.submit');
-Route::get('user/logout','FrontendController@logout')->name('user.logout');
+// Authentication & Socialite
+Route::get('user/login', [FrontendController::class, 'login'])->name('login.form');
+Route::post('user/login', [FrontendController::class, 'loginSubmit'])->name('login.submit');
+Route::get('user/logout', [FrontendController::class, 'logout'])->name('user.logout');
 
-Route::get('user/register','FrontendController@register')->name('register.form');
-Route::post('user/register','FrontendController@registerSubmit')->name('register.submit');
-// Reset password
-Route::get('password-reset', 'FrontendController@showResetForm')->name('password.reset');
-// Socialite
-Route::get('login/{provider}/', 'Auth\LoginController@redirect')->name('login.redirect');
-Route::get('login/{provider}/callback/', 'Auth\LoginController@Callback')->name('login.callback');
+Route::get('user/register', [FrontendController::class, 'register'])->name('register.form');
+Route::post('user/register', [FrontendController::class, 'registerSubmit'])->name('register.submit');
 
-Route::get('/','FrontendController@home')->name('home');
+Route::get('password-reset', [FrontendController::class, 'showResetForm'])->name('password.reset');
+
+Route::get('login/{provider}/', [LoginController::class, 'redirect'])->name('login.redirect');
+Route::get('login/{provider}/callback/', [LoginController::class, 'Callback'])->name('login.callback');
 
 // Frontend Routes
-Route::get('/home', 'FrontendController@index');
-Route::get('/about-us','FrontendController@aboutUs')->name('about-us');
-Route::get('/recruitment','FrontendController@recruitment')->name('recruitment');
-Route::post('/recruitment/message','MessageController@store')->name('recruitment.store');
-Route::get('/contact','FrontendController@contact')->name('contact');
-
+Route::get('/', [FrontendController::class, 'home'])->name('home');
+Route::get('/home', [FrontendController::class, 'index']);
+Route::get('/about-us', [FrontendController::class, 'aboutUs'])->name('about-us');
+Route::get('/recruitment', [FrontendController::class, 'recruitment'])->name('recruitment');
+Route::post('/recruitment/message', [MessageController::class, 'store'])->name('recruitment.store');
+Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 
 // Blog
-Route::get('/blog','FrontendController@blog')->name('blog');
-Route::get('/blog-detail/{slug}','FrontendController@blogDetail')->name('blog.detail');
-Route::get('/blog/search','FrontendController@blogSearch')->name('blog.search');
-Route::post('/blog/filter','FrontendController@blogFilter')->name('blog.filter');
-Route::get('blog-cat/{slug}','FrontendController@blogByCategory')->name('blog.category');
-Route::get('blog-tag/{slug}','FrontendController@blogByTag')->name('blog.tag');
+Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
+Route::get('/blog-detail/{slug}', [FrontendController::class, 'blogDetail'])->name('blog.detail');
+Route::get('/blog/search', [FrontendController::class, 'blogSearch'])->name('blog.search');
+Route::post('/blog/filter', [FrontendController::class, 'blogFilter'])->name('blog.filter');
+Route::get('/blog-cat/{slug}', [FrontendController::class, 'blogByCategory'])->name('blog.category');
+Route::get('/blog-tag/{slug}', [FrontendController::class, 'blogByTag'])->name('blog.tag');
 
-// NewsLetter
-Route::post('/subscribe','FrontendController@subscribe')->name('subscribe');
-
-// Backend section start
-Route::group(['prefix'=>'/admin','middleware'=>['auth','admin']],function(){
+// Backend Admin
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/', function () {
         return redirect()->route('post.index');
     })->name('admin');
-    Route::get('/file-manager',function(){
+    Route::get('/file-manager', function () {
         return view('backend.layouts.file-manager');
     })->name('file-manager');
-    // user route
-    Route::resource('users','UsersController');
-    // Banner
-    Route::resource('banner','BannerController');
-    // Profile
-    Route::get('/profile','AdminController@profile')->name('admin-profile');
-    Route::post('/profile/{id}','AdminController@profileUpdate')->name('profile-update');
-    // POST category
-    Route::resource('/post-category','PostCategoryController');
-    // Post tag
-    Route::resource('/post-tag','PostTagController');
-    // Post
-    Route::resource('/post','PostController');
-    // Message
-    Route::resource('/message','MessageController');
-    Route::get('/message/five','MessageController@messageFive')->name('messages.five');
 
-    // Settings
-    Route::get('settings','AdminController@settings')->name('settings');
-    Route::post('setting/update','AdminController@settingsUpdate')->name('settings.update');
+    Route::resource('users', UsersController::class);
+    Route::resource('banner', BannerController::class);
+    Route::resource('post-category', PostCategoryController::class);
+    Route::resource('post-tag', PostTagController::class);
+    Route::resource('post', PostController::class);
+    Route::resource('message', MessageController::class);
 
-    // Notification
-    Route::get('/notification/{id}','NotificationController@show')->name('admin.notification');
-    Route::get('/notifications','NotificationController@index')->name('all.notification');
-    Route::delete('/notification/{id}','NotificationController@delete')->name('notification.delete');
-    // Password Change
-    Route::get('change-password', 'AdminController@changePassword')->name('change.password.form');
-    Route::post('change-password', 'AdminController@changPasswordStore')->name('change.password');
+    Route::get('/message/five', [MessageController::class, 'messageFive'])->name('messages.five');
+
+    Route::get('/profile', [AdminController::class, 'profile'])->name('admin-profile');
+    Route::post('/profile/{id}', [AdminController::class, 'profileUpdate'])->name('profile-update');
+
+    Route::get('settings', [AdminController::class, 'settings'])->name('settings');
+    Route::post('setting/update', [AdminController::class, 'settingsUpdate'])->name('settings.update');
+
+    Route::get('change-password', [AdminController::class, 'changePassword'])->name('change.password.form');
+    Route::post('change-password', [AdminController::class, 'changPasswordStore'])->name('change.password');
 });
 
-
-
-
-
-
-
-
-
-
-// User section start
-Route::group(['prefix'=>'/user','middleware'=>['user']],function(){
-    Route::get('/','HomeController@index')->name('user');
-     // Profile
-     Route::get('/profile','HomeController@profile')->name('user-profile');
-     Route::post('/profile/{id}','HomeController@profileUpdate')->name('user-profile-update');
-    //  Order
-    Route::get('/order',"HomeController@orderIndex")->name('user.order.index');
-    Route::get('/order/show/{id}',"HomeController@orderShow")->name('user.order.show');
-    Route::delete('/order/delete/{id}','HomeController@userOrderDelete')->name('user.order.delete');
-    // Product Review
-    Route::get('/user-review','HomeController@productReviewIndex')->name('user.productreview.index');
-    Route::delete('/user-review/delete/{id}','HomeController@productReviewDelete')->name('user.productreview.delete');
-    Route::get('/user-review/edit/{id}','HomeController@productReviewEdit')->name('user.productreview.edit');
-    Route::patch('/user-review/update/{id}','HomeController@productReviewUpdate')->name('user.productreview.update');
-
-    // Post comment
-    Route::get('user-post/comment','HomeController@userComment')->name('user.post-comment.index');
-    Route::delete('user-post/comment/delete/{id}','HomeController@userCommentDelete')->name('user.post-comment.delete');
-    Route::get('user-post/comment/edit/{id}','HomeController@userCommentEdit')->name('user.post-comment.edit');
-    Route::patch('user-post/comment/udpate/{id}','HomeController@userCommentUpdate')->name('user.post-comment.update');
-
-    // Password Change
-    Route::get('change-password', 'HomeController@changePassword')->name('user.change.password.form');
-    Route::post('change-password', 'HomeController@changPasswordStore')->name('change.password');
-
-});
-
+// Laravel File Manager
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });

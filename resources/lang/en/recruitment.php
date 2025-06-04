@@ -1,6 +1,6 @@
 <?php
 return [
-    'title' => 'Recruitment',
+    'title' => 'Apply',
     'name' => 'Name',
     'email' => 'E-mail',
     'phone' => 'Phone number',

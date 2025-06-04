@@ -46,7 +46,6 @@
     <div class="rs-counter style1 modify bg21 pt-92 pb-100 md-pt-72 md-pb-80">
         <div class="container">
             <div class="sec-title text-center mb-52 md-mb-29">
-                <div class="sub-title white-color">Fun Facts</div>
                 <h2 class="title mb-0 white-color">Lý do khách hàng tin tưởng chúng tôi</h2>
             </div>
             <div class="row">

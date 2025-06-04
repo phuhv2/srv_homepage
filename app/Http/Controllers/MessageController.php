@@ -9,14 +9,15 @@ use Illuminate\Support\Facades\Mail;
 class MessageController extends Controller
 {
 
-    public function index(){
-        $messages=Message::paginate(100);
-        return view('backend.message.index')->with('messages',$messages);
+    public function index()
+    {
+        $messages = Message::paginate(100);
+        return view('backend.message.index')->with('messages', $messages);
     }
 
     public function messageFive()
     {
-        $message=Message::whereNull('read_at')->limit(5)->get();
+        $message = Message::whereNull('read_at')->limit(5)->get();
         return response()->json($message);
     }
 
@@ -40,31 +41,31 @@ class MessageController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'    => 'required|string|max:255',
-            'email'   => 'required|email',
-            'phone'   => 'required|string|max:20',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone' => 'required|string|max:20',
             'subject' => 'required|string|not_in:0',
-            'cv'      => [
+            'cv' => [
                 'nullable',
                 'max:2048',
             ],
         ]);
 
         $position_apply = null;
-        if($request->subject =='worker') {
+        if ($request->subject == 'worker') {
             $position_apply = 'Công Nhân';
-        } else if ($request->subject =='qa') {
+        } else if ($request->subject == 'qa') {
             $position_apply = 'Nhân Viên Phòng Chất Lượng (QA)';
-        } else if ($request->subject =='plan') {
+        } else if ($request->subject == 'plan') {
             $position_apply = 'Nhân Viên Kế Hoạch Sản Xuất';
-        } else if ($request->subject =='pro') {
+        } else if ($request->subject == 'pro') {
             $position_apply = 'Nhân Viên Quản Lý Sản Xuất';
         }
 
         $data = [
-            'name'    => $request->name,
-            'email'   => $request->email,
-            'phone'   => $request->phone,
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
             'subject' => $position_apply,
         ];
 
@@ -78,7 +79,7 @@ class MessageController extends Controller
 
         try {
             Mail::send([], [], function ($message) use ($request, $htmlContent) {
-                $message->to('phuhv2@gmail.com')
+                $message->to(['canh.nd@sumirubber-vn.com', 'hien.vt@sumirubber-vn.com'])
                     ->subject('Ứng tuyển việc làm từ website')
                     ->html($htmlContent);
 
@@ -99,15 +100,14 @@ class MessageController extends Controller
     }
 
 
-    public function show(Request $request,$id)
+    public function show(Request $request, $id)
     {
-        $message=Message::find($id);
-        if($message){
-            $message->read_at=\Carbon\Carbon::now();
+        $message = Message::find($id);
+        if ($message) {
+            $message->read_at = \Carbon\Carbon::now();
             $message->save();
-            return view('backend.message.show')->with('message',$message);
-        }
-        else{
+            return view('backend.message.show')->with('message', $message);
+        } else {
             return back();
         }
     }
@@ -124,13 +124,12 @@ class MessageController extends Controller
 
     public function destroy($id)
     {
-        $message=Message::find($id);
-        $status=$message->delete();
-        if($status){
-            request()->session()->flash('success','Đã xóa tin nhắn thành công');
-        }
-        else{
-            request()->session()->flash('error','Error occurred please try again');
+        $message = Message::find($id);
+        $status = $message->delete();
+        if ($status) {
+            request()->session()->flash('success', 'Đã xóa tin nhắn thành công');
+        } else {
+            request()->session()->flash('error', 'Error occurred please try again');
         }
         return back();
     }

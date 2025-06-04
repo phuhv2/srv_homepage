@@ -15,7 +15,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 @if(count($postTags)>0)
-                    <table class="table table-bordered" id="post-category-dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered table-hover" id="post-category-dataTable" width="100%" cellspacing="0">
                         <thead>
                         <tr>
                             <th style="width: 15px">S.N.</th>

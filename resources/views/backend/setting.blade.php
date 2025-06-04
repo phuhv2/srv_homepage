@@ -8,14 +8,14 @@
                 @csrf
                 {{-- @method('PATCH') --}}
                 {{-- {{dd($data)}} --}}
-                <div class="form-group">
+                <div class="form-group" style="display:none">
                     <label for="short_des" class="col-form-label">Mô tả ngắn <span class="text-danger">*</span></label>
                     <textarea class="form-control" id="quote" name="short_des">{{$data->short_des}}</textarea>
                     @error('short_des')
                     <span class="text-danger">{{$message}}</span>
                     @enderror
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="display:none">
                     <label for="description" class="col-form-label">Mô tả chi tiết <span
                             class="text-danger">*</span></label>
                     <textarea class="form-control" id="description" name="description">{{$data->description}}</textarea>

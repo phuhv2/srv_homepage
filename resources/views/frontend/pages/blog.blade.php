@@ -46,7 +46,7 @@
 
                 <div class="col-lg-4 md-mb-50 pl-35 lg-pl-15 md-order-first">
                     <div id="sticky-sidebar" class="blog-sidebar">
-                        <div class="sidebar-search sidebar-grid shadow mb-50">
+                        <div class="sidebar-search sidebar-grid shadow mb-30">
                             <form class="search-bar" method="GET" action="{{route('blog.search')}}">
                                 <input type="text" placeholder="{{ __('blog.search') }}" name="search">
                                 <span>
@@ -55,7 +55,7 @@
                             </form>
                         </div>
 
-                        <div class="sidebar-popular-post sidebar-grid shadow mb-50">
+                        <div class="sidebar-popular-post sidebar-grid shadow mb-30">
                             <div class="sidebar-title">
                                 <h3 class="title semi-bold mb-20">{{ __('blog.recent_post') }}</h3>
                             </div>

@@ -1,17 +1,5 @@
 @charset "utf-8";
 
-/**
-*
-* -----------------------------------------------------------------------------
-*
-* Template : Reobiz – Consulting Business HTML Template
-* Author : rs-theme
-* Author URI : http://www.rstheme.com/
-*
-* -----------------------------------------------------------------------------
-*
-**/
-
 /* Important CSS */
 .dual-btn .dual-btn-wrap a.btn-left {
     margin-right: calc(0px/2);
@@ -280,7 +268,7 @@
     }
     .rs-about.style10 .sec-title4 .title{
         font-size: 33px;
-        line-height: 40px; 
+        line-height: 40px;
     }
     .rs-about.style8 .widget-center {
         margin: -164px 0px 0px 228px;
@@ -783,7 +771,7 @@
 }
 
 @media screen and (min-width: 992px){
-    .nav-menu .rs-mega-menu > a:after, 
+    .nav-menu .rs-mega-menu > a:after,
     .nav-menu > .menu-item-has-children > a:after {
         content: "\f107";
         font-family: FontAwesome;
@@ -791,7 +779,7 @@
         margin: 2px 0 0 5px;
         display: none;
     }
-    .sticky{ 
+    .sticky{
         background: #fff !important;
         position: fixed !important;
         top: 0px;
@@ -865,7 +853,7 @@
     .rs-video.style2 .video-skill .video-wrap {
         padding: 229px 0 230px 0;
     }
-    .rs-services.style14.it-solutions .flip-box-inner .flip-box-wrap .front-part .front-content-part .front-desc-part p {       
+    .rs-services.style14.it-solutions .flip-box-inner .flip-box-wrap .front-part .front-content-part .front-desc-part p {
         font-size: 14px;
     }
     .rs-services.style14 .flip-box-inner .flip-box-wrap .back-front {
@@ -1193,7 +1181,7 @@
     .md-text-center {
         text-align: center !important;
     }
-  
+
     .bg1 {
         background-position: right;
     }
@@ -1256,7 +1244,7 @@
         line-height: 75px !important;
         z-index: 1;
     }
-  
+
     .full-width-header.header-style2 .rs-header .menu-area.sticky .main-menu .rs-menu ul.nav-menu > li > a {
         line-height: normal;
         height: unset;
@@ -1266,7 +1254,7 @@
     .full-width-header.header-style-4 .rs-header .menu-area .main-menu .rs-menu ul.mega-menu,
     .full-width-header.header-style2.modify4 .rs-header .menu-area .rs-menu-area .main-menu .rs-menu ul.mega-menu,
     .full-width-header.header-style2.modify3 .rs-header .menu-area .main-menu .rs-menu ul.mega-menu,
-    body.home-eleven .full-width-header .rs-header .menu-area .main-menu .rs-menu ul.mega-menu, body.home-eleven .full-width-header .rs-header .menu-area .main-menu 
+    body.home-eleven .full-width-header .rs-header .menu-area .main-menu .rs-menu ul.mega-menu, body.home-eleven .full-width-header .rs-header .menu-area .main-menu
     .rs-menu ul.sub-menu,
     body.home-ten .full-width-header.header-style2 .rs-header .menu-area .rs-menu-area .main-menu .rs-menu ul.mega-menu,
     .full-width-header.header-style2.modify .rs-header .menu-area .main-menu .rs-menu ul.mega-menu,
@@ -1281,7 +1269,7 @@
     }
     .full-width-header .rs-header .menu-area .rs-menu-toggle {
         display: block;
-    }  
+    }
     .full-width-header.header-style2 .custom-row .col-cell,
     .full-width-header .rs-header .menu-area .logo-area .dark {
         display: block;
@@ -1303,21 +1291,21 @@
     .full-width-header.header-style2.modify3 .rs-header .menu-area .rs-menu-area,
     .full-width-header .rs-header .menu-area .rs-menu-toggle {
         display: block;
-    } 
-   
+    }
+
     .full-width-header .rs-header .menu-area .rs-menu-toggle i {
         margin: 0;
     }
-    .full-width-header.header-style-4 .rs-header .menu-area .main-menu .rs-menu ul li a:hover, 
-    .full-width-header.header-style-4 .rs-header .menu-area .main-menu .rs-menu ul li.active a, 
-    .full-width-header.header-style-4 .rs-header .menu-area .main-menu .rs-menu ul li.current-menu-item > a, 
+    .full-width-header.header-style-4 .rs-header .menu-area .main-menu .rs-menu ul li a:hover,
+    .full-width-header.header-style-4 .rs-header .menu-area .main-menu .rs-menu ul li.active a,
+    .full-width-header.header-style-4 .rs-header .menu-area .main-menu .rs-menu ul li.current-menu-item > a,
     .full-width-header.header-style-4 .rs-header .menu-area .main-menu .rs-menu ul li.current-menu-item > a::before {
         color: #ffffff !important;
     }
     .full-width-header .rs-header .menu-area .rs-menu-area {
-        display: block; 
-        align-items: unset; 
-        justify-content: unset; 
+        display: block;
+        align-items: unset;
+        justify-content: unset;
     }
     .full-width-header .rs-header .menu-area .main-menu .rs-menu {
         padding-right: 30px;
@@ -1369,7 +1357,7 @@
         color: #257be5 !important;
     }
     .full-width-header .rs-header .menu-area.sticky {
-        position: unset; 
+        position: unset;
         background: transparent;
         box-shadow: none;
     }
@@ -1532,8 +1520,8 @@
         width: 100px;
     }
     .rs-footer .footer-content .footer-post .post-wrap .post-desc {
-        float: none; 
-        width: auto; 
+        float: none;
+        width: auto;
     }
     .rs-slider.slider2 .content-part {
         padding: 200px 0 206px;
@@ -2092,7 +2080,7 @@
     }
     .rs-banner.style4 {
         background: unset;
-      
+
     }
     .rs-pricing.style5 .pricing-table {
         max-width: 420px;
@@ -2140,7 +2128,7 @@
     }
     .rs-services.style5 .sec-title .title2 br {
         display: none;
-    }   
+    }
     .sec-title2 .title {
         font-size: 37px;
         line-height: 47px;
@@ -2288,7 +2276,7 @@
         max-width: 250px;
     }
     .rs-team.grid1.modify .team-item .image-part a img {
-        max-width: 100%; 
+        max-width: 100%;
     }
     .rs-banner.style1 .content-part .title {
         font-size: 30px;
@@ -2368,7 +2356,7 @@
         text-align: left !important;
     }
     .rs-cart .cart-wrap table.cart-table .action .coupon {
-        float: none; 
+        float: none;
         margin-bottom: 30px;
         text-align: left !important;
         display: block;
@@ -2508,7 +2496,7 @@
     .rs-slider.slider12 .slider .content-part {
         padding: 220px 0 270px;
         max-height: 700px;
-     
+
     }
     .rs-video.style2 .video-skill .skillsets-part {
         padding: 40px 30px 40px 40px;
@@ -2869,7 +2857,7 @@
         padding: 17px 50px 40px 20px !important;
         font-size: 13px;
     }
-  
+
     .rs-about.style10 .accordion .card .card-header .card-link,
     .rs-about.style10 .accordion .card .card-header .card-link.collapsed.card-link {
         font-size: 13px;
